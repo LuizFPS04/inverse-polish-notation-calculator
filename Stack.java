@@ -1,19 +1,19 @@
-public class Pilha {
+public class Stack {
      private Element topElement;
      Element element;
 
-     public Pilha() {
+     public Stack() {
           topElement = null;
      }
 
-     public void Empilhar(String element) {
+     public void stackUp(String element) {
           this.element = new Element(element);
           this.element.setBelow(topElement);
           topElement = this.element;
      }
 
-     public Element Desempilhar() {
-          if (!isVoid()) {
+     public Element unstack() {
+          if (!isEmpty()) {
                System.out.println("there are no elements in the stack");
                return null;
           }
@@ -23,7 +23,7 @@ public class Pilha {
           return aux;
      }
 
-     public boolean isVoid() {
+     public boolean isEmpty() {
           if(topElement != null){
                return true;
           }
@@ -31,11 +31,11 @@ public class Pilha {
      }
 
      public void print() {
-          if (!isVoid()) {
+          if (!isEmpty()) {
                System.out.println("there are no elements in the stack");
           } else {
                Element aux = topElement;
-               while (aux.getBelow() != null) {
+               while (aux != null) {
                     System.out.println("Element: " + aux.getValue() + " ");
                     aux = aux.getBelow();
                }

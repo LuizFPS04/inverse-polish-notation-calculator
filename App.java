@@ -1,14 +1,16 @@
 public class App {
      public static void main(String[] args) {
-          Pilha pilha = new Pilha();
-          pilha.Empilhar("?");
-          pilha.Empilhar("bem");
-          pilha.Empilhar("tudo");
-          pilha.Empilhar("oi");
+          Stack pilha = new Stack();
+          pilha.stackUp("?");
+          pilha.stackUp("bem");
+          pilha.stackUp("tudo");
+          pilha.stackUp("oi");
+
           pilha.print();
-          System.out.println(pilha.Desempilhar());
-          System.out.println(pilha.Desempilhar());
-          System.out.println(pilha.Desempilhar());
-          System.out.println(pilha.Desempilhar());
+          
+          System.out.println(pilha.unstack());
+          System.out.println(pilha.unstack());
+          System.out.println(pilha.unstack());
+          System.out.println(pilha.unstack());
      }
 }
