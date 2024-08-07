@@ -13,31 +13,31 @@ public class Stack {
      }
 
      public Element unstack() {
-          if (!isEmpty()) {
+          if (isEmpty()) {
                System.out.println("there are no elements in the stack");
                return null;
           }
-          Element aux = topElement;
+          Element stackAux = topElement;
           topElement = topElement.getBelow();
-          aux.setBelow(null);
-          return aux;
+          stackAux.setBelow(null);
+          return stackAux;
      }
 
      public boolean isEmpty() {
           if(topElement != null){
-               return true;
+               return false;
           }
-          return false;
+          return true;
      }
 
      public void print() {
-          if (!isEmpty()) {
+          if (isEmpty()) {
                System.out.println("there are no elements in the stack");
           } else {
-               Element aux = topElement;
-               while (aux != null) {
-                    System.out.println("Element: " + aux.getValue() + " ");
-                    aux = aux.getBelow();
+               Element stackAux = topElement;
+               while (stackAux != null) {
+                    System.out.println("Element: " + stackAux.getValue() + " ");
+                    stackAux = stackAux.getBelow();
                }
           }
      }

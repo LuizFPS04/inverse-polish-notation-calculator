@@ -1,6 +1,7 @@
 public class App {
      public static void main(String[] args) {
           Stack pilha = new Stack();
+          
           pilha.stackUp("?");
           pilha.stackUp("bem");
           pilha.stackUp("tudo");
