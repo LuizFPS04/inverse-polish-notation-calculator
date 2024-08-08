@@ -24,7 +24,8 @@ public class ReaderFile {
                 for (String instruction : content) {
                     myStack.stackUp(instruction);
                 }
-
+                myStack.print();
+                System.out.println("========================");
                 line = reader.readLine();
             }
 
@@ -34,26 +35,30 @@ public class ReaderFile {
             System.err.printf("Error opening file: %s\n", e.getMessage());
         }
         
-        myStack.print();
+
 
         return myStack;
     }
 
-    public static void openDir() {
-
-        Path dir = Paths.get("docs\\");
+    public static Stack openDir() {
+        Stack fileOpen = new Stack();
+        Path dir = Paths.get("docs");
 
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
             for (Path archive : stream) {
                 if (Files.isRegularFile(archive)) {
                     String fileName = archive.getFileName().toString();
 
-                    Stack fileOpen = read("src\\" + archive.getFileName(), fileName);
+                    System.out.println(archive.getFileName() + "GALO");
+
+                    fileOpen = read("docs/arquivo.txt", fileName);
+                    return fileOpen;
                 }
             }
 
         } catch (IOException | DirectoryIteratorException e) {
-            System.err.printf("Error reading files: %s\n", e.getMessage());
+            System.err.printf("Error reading files: %s\n", e);
         }
+        return fileOpen;
     }
 }

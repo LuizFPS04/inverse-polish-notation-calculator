@@ -1,18 +1,18 @@
 public class Stack {
-     private Element topElement;
+     Element topElement;
      Element element;
 
      public Stack() {
           topElement = null;
      }
 
-     public void stackUp(String element) {
+     public void stackUp(String element) {// empilhar
           this.element = new Element(element);
           this.element.setBelow(topElement);
           topElement = this.element;
      }
 
-     public Element unstack() {
+     public Element unstack() { // desempilhar
           if (isEmpty()) {
                System.out.println("there are no elements in the stack");
                return null;

@@ -1,17 +1,7 @@
 public class App {
      public static void main(String[] args) {
-          Stack pilha = new Stack();
-          
-          pilha.stackUp("?");
-          pilha.stackUp("bem");
-          pilha.stackUp("tudo");
-          pilha.stackUp("oi");
+          ReaderFile.read("C:\\Users\\Aluno\\Desktop\\prog3\\inverse-polish-notation-calculator\\docs\\input.txt","input");
 
-          pilha.print();
-          
-          System.out.println(pilha.unstack());
-          System.out.println(pilha.unstack());
-          System.out.println(pilha.unstack());
-          System.out.println(pilha.unstack());
+
      }
 }
