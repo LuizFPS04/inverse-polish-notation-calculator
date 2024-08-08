@@ -49,9 +49,7 @@ public class ReaderFile {
                 if (Files.isRegularFile(archive)) {
                     String fileName = archive.getFileName().toString();
 
-                    System.out.println(archive.getFileName() + "GALO");
-
-                    fileOpen = read("docs/arquivo.txt", fileName);
+                    fileOpen = read("docs/" + archive.getFileName(), fileName);
                     return fileOpen;
                 }
             }
