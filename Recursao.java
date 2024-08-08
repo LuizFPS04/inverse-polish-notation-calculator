@@ -5,23 +5,31 @@ public class Recursao {
 
     public Recursao(Stack pilha){
         this.pilha = pilha;
-        this.fila = null;
+        this.fila = new Queue();
         this.signal = "";
     }
 
-    public Recursao recu(Stack pilha, String sinal){
+    public Recursao unstackPushQueue(Stack pilha, String sinal){
+        if (pilha.isEmpty()) {
+            return null;
+        }
+
         String firstElement = pilha.unstack().getValue();
+
+        System.out.println("My Element: " + firstElement);
+
+        if (pilha.topElement != null) {
+            
+            System.out.println("Top: " + pilha.topElement.getValue());
+        }
 
         if (firstElement.equals("+") || firstElement.equals("-") || firstElement.equals("*") || firstElement.equals("/")) {
             this.signal = firstElement;
-            // fila.push(new Item("("));
-            return recu(pilha, firstElement);
-        } else if (pilha.topElement != null) {
-            return null;
+            return unstackPushQueue(pilha, firstElement);
         } else {
             fila.push(new Item(firstElement));
             fila.push(new Item(this.signal));
-            return recu(pilha, sinal);
+            return unstackPushQueue(pilha, sinal);
         }
     }
 }

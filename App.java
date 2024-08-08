@@ -1,7 +1,8 @@
 public class App {
      public static void main(String[] args) {
-          ReaderFile.read("C:\\Users\\Aluno\\Desktop\\prog3\\inverse-polish-notation-calculator\\docs\\input.txt","input");
+          Stack myStack = ReaderFile.read("C:\\Users\\upflo\\OneDrive\\Área de Trabalho\\IFMG\\PROG3\\inverse-polish-notation-calculator\\docs\\input.txt","input");
+          Recursao recursao = new Recursao(myStack);
 
-
+          recursao.unstackPushQueue(myStack, "");
      }
 }
