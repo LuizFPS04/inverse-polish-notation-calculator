@@ -24,8 +24,8 @@ public class ReaderFile {
                 for (String instruction : content) {
                     myStack.stackUp(instruction);
                 }
-                myStack.print();
-                System.out.println("========================");
+                /* myStack.print();
+                System.out.println("========================"); */
                 line = reader.readLine();
             }
 

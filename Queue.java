@@ -19,20 +19,33 @@ public class Queue {
     }
 
     public Item pop() {
-        Item itemAux = null;
-
         if (isEmpty()) {
             System.out.println("Error - Queue is empty.");
+            return null;
         }
 
-        itemAux = this.frontItem.getNext();
-        this.frontItem.setNext(this.frontItem.getNext());
-        this.frontItem.setNext(null);
+        Item itemAux = this.frontItem.getNext();
 
+        // Move o frontItem para o próximo na fila
+        this.frontItem.setNext(itemAux.getNext());
+
+        // Se o behindItem era o mesmo que itemAux, precisamos ajustar
         if (this.behindItem == itemAux) {
             this.behindItem = this.frontItem;
         }
 
         return itemAux;
+    }
+
+    public void print() {
+        if (isEmpty()) {
+            System.out.println("there are no elements in the stack");
+        } else {
+            Item queueAux = frontItem.getNext();
+            while (queueAux != null) {
+                System.out.println("Item: " + queueAux.getValue() + " ");
+                queueAux = queueAux.getNext();
+            }
+        }
     }
 }

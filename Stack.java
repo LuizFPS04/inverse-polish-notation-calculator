@@ -23,6 +23,10 @@ public class Stack {
           return stackAux;
      }
 
+     public boolean isTop(Element myElement) {
+          return myElement == topElement;
+     }
+
      public boolean isEmpty() {
           if(topElement != null){
                return false;
