@@ -3,7 +3,7 @@ public class App {
           Stack myStack = ReaderFile.openDir();
           Recursao recursao = new Recursao(myStack);
 
-          recursao.unstackAndStackUp(myStack);
-          recursao.convertedStack.print();
+          recursao.unstackPushQueue(myStack);
+          recursao.fila.print();
      }
 }
