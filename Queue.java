@@ -43,9 +43,13 @@ public class Queue {
         } else {
             Item queueAux = frontItem.getNext();
             while (queueAux != null) {
-                System.out.println("Item: " + queueAux.getValue() + " ");
+                System.out.print(queueAux.getValue() + " ");
                 queueAux = queueAux.getNext();
             }
         }
+    }
+
+    public Item getBehindItem(){
+        return behindItem;
     }
 }
