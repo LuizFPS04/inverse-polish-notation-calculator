@@ -12,20 +12,45 @@ public class ReaderFile {
     public static Stack read(String path, String file) {
 
         Stack myStack = new Stack();
-
+        Stack res = new Stack();
         try {
             FileReader archive = new FileReader(path);
             BufferedReader reader = new BufferedReader(archive);
             String line = reader.readLine();
 
+            // 5 9 3 + * 
             while (line != null) {
                 String[] content = line.split(" ");
 
                 for (String instruction : content) {
-                    myStack.stackUp(instruction);
+                    if (instruction.equals("+")) {
+                        int num2 = Integer.parseInt(res.unstack().getValue());
+                        int num1 = Integer.parseInt(res.unstack().getValue());
+                        String result = Integer.toString(num1 + num2);
+                        res.stackUp(result);
+                    } else if (instruction.equals("-")) {
+                        int num2 = Integer.parseInt(res.unstack().getValue());
+                        int num1 = Integer.parseInt(res.unstack().getValue());
+                        String result = Integer.toString(num1 - num2);
+                        res.stackUp(result);
+                    } else if (instruction.equals("*")) {
+                        int num2 = Integer.parseInt(res.unstack().getValue());
+                        int num1 = Integer.parseInt(res.unstack().getValue());
+                        String result = Integer.toString(num1 * num2);
+                        res.stackUp(result);
+                    } else if (instruction.equals("/")) {
+                        int num2 = Integer.parseInt(res.unstack().getValue());
+                        int num1 = Integer.parseInt(res.unstack().getValue());
+                        if (num2 == 0) {
+                            throw new ArithmeticException("Divisão por zero não permitida");
+                        }
+                        String result = Integer.toString(num1 / num2);
+                        res.stackUp(result);
+                    } else {
+                        res.stackUp(instruction);
+                    }
                 }
-                /* myStack.print();
-                System.out.println("========================"); */
+                res.print();
                 line = reader.readLine();
             }
 
@@ -34,8 +59,6 @@ public class ReaderFile {
         } catch (IOException e) {
             System.err.printf("Error opening file: %s\n", e.getMessage());
         }
-        
-
 
         return myStack;
     }

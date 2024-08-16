@@ -3,7 +3,8 @@ public class Recursao {
     Stack convertedStack;
     Queue fila;
     String signal;
-
+    Stack res = new Stack();
+    
     public Recursao(Stack enterStack) {
         this.enterStack = enterStack;
         this.fila = new Queue();
@@ -26,9 +27,7 @@ public class Recursao {
                 unstackPushQueue(pilha);
                 fila.push(new Item(")"));
             } else {
-
                 fila.push(new Item(firstElement));
-
             }
 
         }
