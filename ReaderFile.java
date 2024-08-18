@@ -7,11 +7,30 @@ import java.nio.file.Paths;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+/**
+ * Classe responsável por acessar e ler arquivos de notação polonesa inversa
+ * a partir do diretório corrente "docs".
+ * Realiza a leitura dos arquivos e o cálculo das expressões usando uma pilha.
+ */
 public class ReaderFile {
 
-    public static Stack read(String path, String file) {
+    /**
+     * Instância da classe {@link Result} utilizada para processar instruções lidas
+     * do arquivo.
+     */
+    static Result result = new Result();
 
-        Stack myStack = new Stack();
+    /**
+     * Lê o arquivo especificado pelo caminho e nome, processa seu conteúdo e
+     * retorna uma pilha contendo as instruções lidas.
+     * 
+     * @param path Caminho para o arquivo a ser lido.
+     * @param file Nome do arquivo a ser lido.
+     * @return Uma instância de {@link Stack} contendo as instruções lidas do
+     *         arquivo.
+     */
+    public static Stack read(String path, String file) {
+        Stack poloneseStack = new Stack();
 
         try {
             FileReader archive = new FileReader(path);
@@ -22,10 +41,10 @@ public class ReaderFile {
                 String[] content = line.split(" ");
 
                 for (String instruction : content) {
-                    myStack.stackUp(instruction);
+                    poloneseStack.stackUp(instruction);
+                    result.proccessInstrucion(instruction);
                 }
-                /* myStack.print();
-                System.out.println("========================"); */
+
                 line = reader.readLine();
             }
 
@@ -34,12 +53,17 @@ public class ReaderFile {
         } catch (IOException e) {
             System.err.printf("Error opening file: %s\n", e.getMessage());
         }
-        
 
-
-        return myStack;
+        return poloneseStack;
     }
 
+    /**
+     * Percorre o diretório "docs", lê o primeiro arquivo encontrado e
+     * retorna uma pilha contendo as instruções lidas desse arquivo.
+     * 
+     * @return Uma instância de {@link Stack} contendo as instruções lidas do
+     *         primeiro arquivo encontrado no diretório.
+     */
     public static Stack openDir() {
         Stack fileOpen = new Stack();
         Path dir = Paths.get("docs");
